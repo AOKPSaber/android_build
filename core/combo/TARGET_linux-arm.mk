@@ -74,8 +74,9 @@ TARGET_arm_CFLAGS :=    -O3 \
 else
 TARGET_arm_CFLAGS :=    -Os \
                         -fomit-frame-pointer \
-                        -fstrict-aliasing    \
-                        -funswitch-loops
+                        -fstrict-aliasing \
+                        -funswitch-loops \
+                        -Wno-unused-parameter
 endif
 
 # Modules can choose to compile some source as thumb. As
@@ -92,9 +93,8 @@ else
     TARGET_thumb_CFLAGS :=  -mthumb \
                             -Os \
                             -fomit-frame-pointer \
-                            -fstrict-aliasing \
-			    -Wstrict-aliasing=3 \
-	                    -Werror=strict-aliasing
+                            -fno-strict-aliasing \
+                            -Wno-unused-parameter
 endif
 else
 TARGET_thumb_CFLAGS := $(TARGET_arm_CFLAGS)
