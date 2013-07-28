@@ -74,7 +74,9 @@ TARGET_arm_CFLAGS :=    -O3 \
 else
 TARGET_arm_CFLAGS :=    -Os \
                         -fomit-frame-pointer \
-                        -fstrict-aliasing \
+                        -fstrict-aliasing    \
+                        -Wstrict-aliasing=3 \
+                        -Werror=strict-aliasing \
                         -funswitch-loops \
                         -Wno-unused-parameter
 endif
@@ -93,7 +95,9 @@ else
     TARGET_thumb_CFLAGS :=  -mthumb \
                             -Os \
                             -fomit-frame-pointer \
-                            -fno-strict-aliasing \
+                            -fstrict-aliasing \
+			    -Wstrict-aliasing=3 \
+			    -Werror=strict-aliasing \
                             -Wno-unused-parameter
 endif
 else

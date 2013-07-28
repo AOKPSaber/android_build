@@ -46,11 +46,11 @@ $(combo_target)HAVE_STRLCPY := 0
 $(combo_target)HAVE_STRLCAT := 0
 $(combo_target)HAVE_KERNEL_MODULES := 0
 
-ifneq ($(TARGET_USE_03),true)
+ifeq ($(TARGET_USE_03),true)
 $(combo_target)GLOBAL_CFLAGS := -fno-exceptions -Wno-multichar
 $(combo_target)RELEASE_CFLAGS := -O3 -g -fno-strict-aliasing
 else
-$(combo_target)GLOBAL_CFLAGS := -Os -g -fno-strict-aliasing
+$(combo_target)GLOBAL_CFLAGS := -Os -g -Wstrict-aliasing=3 -Werror=strict-aliasing
 $(combo_target)RELEASE_CFLAGS :=
 endif
 $(combo_target)GLOBAL_LDFLAGS :=
